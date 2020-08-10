@@ -28,6 +28,38 @@ valores */
 /* background gris = #1b2127 */
 /* celeste = #026fff */
 
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?z8s2hg');
+  src:  url('../fonts/icomoon.eot?z8s2hg#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?z8s2hg') format('truetype'),
+    url('../fonts/icomoon.woff?z8s2hg') format('woff'),
+    url('../fonts/icomoon.svg?z8s2hg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "\e900";
+}
+
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
@@ -321,6 +353,7 @@ figure {
   display: block;
   background: transparent;
   color: white;
+  border: solid 1px white;
   padding: 10px 0;
   border-radius: 5px;
   width: 100px;
@@ -344,13 +377,77 @@ figure {
   flex-wrap: inherit;
 }
 
+.burger-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: block;
+  display: none;
+  line-height: 40px;
+  text-align: center;
+  position: fixed;
+  z-index: 4;
+  left: 5px;
+  top: 5px;
+  color: white;
+  background-color: rgba(0, 0, 0, .8);
+}
+
 /*Desktop First que empieces desde el MQ m'as grande */
 
 @media screen and (max-width: 1024px) {
- 
+  .container {
+    padding: 0 ;
+  }
+
+  .hero {
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 2em;;
+  }
+
+  .hero-image {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2em;
+    z-index: 2;
+  }
+}
+
+.html-video {
+  width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 767px) {
+
+  .hero {
+    height: auto;
+    position: relative;
+  }
+
+  .hero-image {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  h1 {
+    font-size: 2em;
+    z-index: 2;
+  }
   .header {
     display: block;
     height: auto;
@@ -364,9 +461,31 @@ figure {
   }
   .header a {
     justify-content: center;
+    height: 40px;
+    font-size: 2em;
+    margin-bottom: .5em;
   }
   .header .logo {
     text-align: center;
+  }
+
+  .menu {
+    position: fixed;
+    background-color: rgba(27, 33, 39, 0.9);
+    z-index: 3;
+    top: 0;
+    left: -100vw;
+    width: 100vw;
+   /*  height: 100vh; */
+   bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+  }
+
+  .menu.is-active{
+    left: 0;
   }
   .project {
     display: block;
@@ -406,10 +525,16 @@ figure {
     flex-shrink: 1;
   }
 
-  
+  .burger-button{
+    display: block;
+  }
 }
 
 @media screen and (max-width: 480px) {
+
+  h1 {
+    font-size: 1.2em;
+  }
   .project-details {
     width: auto;
     font-size: 12px;
@@ -419,9 +544,38 @@ figure {
     margin: -2em .5em .5em ;
     padding: 1em;
   }
+
+  .contact {
+    height: auto;
+    padding: 1em 0;
+    text-align: center;
+    display: block;
+  }
+
+  .form-email button {
+    margin: 1.5em auto;
+  }
+
+  .form-email h3 {
+    margin-top: 0;
+  }
+
+  .footer {
+    display: block;
+    text-align: center;
+    padding: 1px;
+  }
 }
 
 @media screen and (max-width: 320px) {
+
+  h1 {
+    font-size: 1.2em;
+  }
+
+  .hero {
+    padding: 2em;
+  }
   .project-details {
     width: auto;
     font-size: 16px;
